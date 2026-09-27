@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="registration-container">
+
+        <h1>Student Dashboard</h1>
+
+        <p id="welcomeMessage"></p>
+
+        <button onclick="logout()">Logout</button>
+
+    </div>
+
+    <script>
+
+        // Check whether student is logged in
+        const loggedIn = localStorage.getItem("loggedIn");
+        const savedStudent = localStorage.getItem("student");
+
+        if (loggedIn !== "true" || !savedStudent) {
+            window.location.href = "login.html";
+        }
+
+        const student = JSON.parse(savedStudent);
+
+        document.getElementById("welcomeMessage").textContent =
+            "Welcome, " + student.name + "!";
+
+        function logout() {
+
+            localStorage.removeItem("loggedIn");
+
+            window.location.href = "login.html";
+        }
+
+    </script>
+
+</body>
+</html>
