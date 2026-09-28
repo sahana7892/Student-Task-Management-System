@@ -1,0 +1,11 @@
+{% extends "portal/base.html" %}
+{% block title %}{{ heading }}{% endblock %}
+{% block content %}
+<div class="breadcrumb"><a href="{% url 'admin_dashboard' %}">Students</a><span>/</span><span>{{ heading }}</span></div>
+<header class="page-heading page-heading-narrow"><div><div class="eyebrow">STUDENT RECORD</div><h1>{{ heading }}</h1><p class="page-subtitle">Account access and enrollment details.</p></div></header>
+<section class="form-panel form-panel-narrow"><form method="post" class="stack-form" novalidate>{% csrf_token %}
+    {% if form.non_field_errors %}<div class="form-alert" role="alert">{{ form.non_field_errors }}</div>{% endif %}
+    {% for field in form %}<div class="field"><label for="{{ field.id_for_label }}">{{ field.label }}</label>{{ field }}{% if field.help_text %}<small class="help-text">{{ field.help_text }}</small>{% endif %}{% for error in field.errors %}<span class="field-error">{{ error }}</span>{% endfor %}</div>{% endfor %}
+    <div class="form-actions"><a class="button button-quiet" href="{% url 'admin_dashboard' %}">Cancel</a><button class="button button-primary" type="submit">Save student <span aria-hidden="true">-&gt;</span></button></div>
+</form></section>
+{% endblock %}
