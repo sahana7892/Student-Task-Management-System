@@ -3,56 +3,194 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Registration</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Student Task Management System</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f4f6f8;
+            padding: 30px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 25px;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            margin-bottom: 25px;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #444;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 7px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        input,
+        textarea,
+        select {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 18px;
+            border: 1px solid #ccc;
+            border-radius: 7px;
+            font-size: 15px;
+        }
+
+        textarea {
+            height: 100px;
+            resize: vertical;
+        }
+
+        input:focus,
+        textarea:focus,
+        select:focus {
+            outline: none;
+            border-color: #4a90e2;
+        }
+
+        .create-btn {
+            width: 100%;
+            padding: 13px;
+            border: none;
+            border-radius: 7px;
+            background: #4a90e2;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .create-btn:hover {
+            background: #357abd;
+        }
+
+        .task {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            background: #fafafa;
+        }
+
+        .task-info {
+            flex: 1;
+        }
+
+        .task-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 6px;
+        }
+
+        .task-description {
+            color: #666;
+            margin-bottom: 6px;
+        }
+
+        .priority {
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .delete-btn {
+            background: #e74c3c;
+            color: white;
+            border: none;
+            padding: 9px 15px;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-left: 15px;
+        }
+
+        .delete-btn:hover {
+            background: #c0392b;
+        }
+
+        .empty-message {
+            text-align: center;
+            color: #888;
+            padding: 20px;
+        }
+    </style>
 </head>
 
 <body>
 
-    <div class="registration-container">
+    <div class="container">
 
-        <h1>Student Registration</h1>
+        <h1>Student Task Management System</h1>
 
-        <form id="registrationForm">
+        <!-- Create Task -->
+        <div class="card">
 
-            <label for="name">Full Name</label>
-            <input
-                type="text"
-                id="name"
-                placeholder="Enter your full name"
-            >
+            <h2>Create Task</h2>
 
-            <label for="email">Email</label>
-            <input
-                type="email"
-                id="email"
-                placeholder="Enter your email"
-            >
+            <form id="taskForm">
 
-            <label for="password">Password</label>
-            <input
-                type="password"
-                id="password"
-                placeholder="Enter your password"
-            >
+                <label for="title">Task Title</label>
+                <input
+                    type="text"
+                    id="title"
+                    placeholder="Enter task title"
+                >
 
-            <label for="confirmPassword">Confirm Password</label>
-            <input
-                type="password"
-                id="confirmPassword"
-                placeholder="Confirm your password"
-            >
+                <label for="description">Description</label>
+                <textarea
+                    id="description"
+                    placeholder="Enter task description"
+                ></textarea>
 
-            <button type="submit">Register</button>
+                <label for="priority">Priority</label>
+                <select id="priority">
+                    <option value="Low">Low</option>
+                    <option value="Medium" selected>Medium</option>
+                    <option value="High">High</option>
+                </select>
 
-            <p id="message"></p>
+                <button type="submit" class="create-btn">
+                    Create Task
+                </button>
 
-        </form>
+            </form>
 
-        <p style="text-align:center; margin-top:20px;">
-            Already have an account?
-            <a href="login.html">Login here</a>
-        </p>
+        </div>
+
+        <!-- Task List -->
+        <div class="card">
+
+            <h2>My Tasks</h2>
+
+            <div id="taskList"></div>
+
+        </div>
 
     </div>
 
