@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+# Student Task Management System
 # Student Task Management
 
 A student task portal with student records, assignment deadlines, and progress tracking. It uses SQLite storage and opens directly to the management workspace without a login page.
@@ -36,7 +36,6 @@ This version has no authentication or authorization. Anyone who can reach it can
 ```powershell
 python manage.py test portal.tests
 ```
-=======
 # Student Task Management System (Assessment Module)
 
 **Done by:** Jason Kenneth N
@@ -107,4 +106,4 @@ Student-Task-Management-System/
 | PUT    | `/api/assignments/{id}/` | Update full assignment  |
 | PATCH  | `/api/assignments/{id}/` | Partial update (status) |
 | DELETE | `/api/assignments/{id}/` | Delete an assignment    |
->>>>>>> f294463e48476fd8e3a4143cd70b36300146462e
+

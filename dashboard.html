@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="registration-container dashboard-container">
+
+        <h1>Student Dashboard</h1>
+
+        <div class="welcome-box">
+            <div class="avatar" id="dashAvatar">S</div>
+            <p id="welcomeMessage">Welcome!</p>
+            <p id="studentEmail" class="subheading"></p>
+        </div>
+
+        <div class="dashboard-actions">
+            <a href="profile.html" class="btn-primary-link">Manage Profile</a>
+            <button onclick="logout()" class="btn-secondary">Logout</button>
+        </div>
+
+<body>
+
+    <div class="registration-container">
+
+        <h1>Student Dashboard</h1>
+
+        <p id="welcomeMessage"></p>
+
+        <!-- Logout Button -->
+        <button onclick="logout()">
+            Logout
+        </button>
+
+    </div>
+
+    <script>
+
+        // Check whether student is logged in
+        const loggedIn = localStorage.getItem("loggedIn");
+        const savedStudent = localStorage.getItem("student");
+
+        if (loggedIn !== "true" || !savedStudent) {
+            window.location.href = "login.html";
+        }
+
+        const student = JSON.parse(savedStudent);
+
+        // Display student name
+        document.getElementById("welcomeMessage").textContent =
+            "Welcome, " + (student.name || "Student") + "!";
+        
+        document.getElementById("studentEmail").textContent = student.email || "";
+
+        // Set avatar initials
+        if (student.name) {
+            const parts = student.name.trim().split(" ");
+            const initials = parts.length >= 2 
+                ? (parts[0][0] + parts[parts.length - 1][0]).toUpperCase()
+                : student.name.slice(0, 2).toUpperCase();
+            document.getElementById("dashAvatar").textContent = initials;
+        }
+
+            "Welcome, " + student.name + "!";
+
+        // Logout function
+        function logout() {
+            localStorage.removeItem("loggedIn");
+            window.location.href = "login.html";
+        }
+
+    </script>
+
+</body>
+</html>
