@@ -1,0 +1,8 @@
+{% extends "portal/base.html" %}
+{% block title %}{{ task.title }}{% endblock %}
+{% block content %}
+<div class="breadcrumb"><a href="{% url 'student_dashboard' %}?student_id={{ task.student.pk }}">Student tasks</a><span>/</span><span>{{ task.title }}</span></div>
+<header class="page-heading page-heading-narrow task-detail-heading"><div><div class="eyebrow">ASSIGNMENT / {{ task.get_priority_display|upper }} PRIORITY</div><h1>{{ task.title }}</h1><p class="page-subtitle">Due {{ task.due_at|date:"l, F j, Y" }} at {{ task.due_at|date:"g:i A" }}</p></div><span class="task-state state-{{ task.status }}">{{ task.get_status_display }}</span></header>
+<div class="detail-layout"><section class="detail-copy"><div class="eyebrow">TASK DETAILS</div><h2>What to work on</h2><p class="description-copy">{{ task.description|default:"No additional instructions were provided."|linebreaksbr }}</p><div class="submission-note"><div class="eyebrow">SUBMISSION</div>{% if task.submitted_at %}<p>Marked complete {{ task.submitted_at|date:"M j, Y, g:i A" }}.</p>{% else %}<p>Not marked complete yet.</p>{% endif %}{% if task.submission_text %}<blockquote>{{ task.submission_text|linebreaksbr }}</blockquote>{% endif %}</div></section>
+<section class="form-panel detail-form"><div class="eyebrow">UPDATE PROGRESS</div><h2>Keep your status current</h2><form method="post" class="stack-form" novalidate>{% csrf_token %}{% for field in form %}<div class="field"><label for="{{ field.id_for_label }}">{{ field.label }}</label>{{ field }}{% for error in field.errors %}<span class="field-error">{{ error }}</span>{% endfor %}</div>{% endfor %}<button class="button button-primary" type="submit">Save progress <span aria-hidden="true">-&gt;</span></button></form></section></div>
+{% endblock %}

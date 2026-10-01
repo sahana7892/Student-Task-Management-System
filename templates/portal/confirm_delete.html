@@ -1,0 +1,6 @@
+{% extends "portal/base.html" %}
+{% block title %}Delete {{ kind }}{% endblock %}
+{% block content %}
+<div class="breadcrumb"><a href="{% if kind == 'student' %}{% url 'admin_dashboard' %}{% else %}{% url 'task_list' %}{% endif %}">{{ kind|title }}s</a><span>/</span><span>Delete</span></div>
+<section class="confirm-panel"><div class="eyebrow eyebrow-danger">CONFIRM DELETION</div><h1>Delete this {{ kind }}?</h1><p><strong>{{ object }}</strong> will be permanently removed{% if kind == 'student' %}, along with their assigned tasks{% endif %}. This action cannot be undone.</p><form method="post" class="form-actions">{% csrf_token %}<a class="button button-quiet" href="{% if kind == 'student' %}{% url 'admin_dashboard' %}{% else %}{% url 'task_list' %}{% endif %}">Cancel</a><button class="button button-danger" type="submit">Delete {{ kind }}</button></form></section>
+{% endblock %}

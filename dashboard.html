@@ -23,9 +23,23 @@
             <button onclick="logout()" class="btn-secondary">Logout</button>
         </div>
 
+<body>
+
+    <div class="registration-container">
+
+        <h1>Student Dashboard</h1>
+
+        <p id="welcomeMessage"></p>
+
+        <!-- Logout Button -->
+        <button onclick="logout()">
+            Logout
+        </button>
+
     </div>
 
     <script>
+
         // Check whether student is logged in
         const loggedIn = localStorage.getItem("loggedIn");
         const savedStudent = localStorage.getItem("student");
@@ -51,10 +65,14 @@
             document.getElementById("dashAvatar").textContent = initials;
         }
 
+            "Welcome, " + student.name + "!";
+
+        // Logout function
         function logout() {
             localStorage.removeItem("loggedIn");
             window.location.href = "login.html";
         }
+
     </script>
 
 </body>
