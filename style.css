@@ -1,5 +1,13 @@
 * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f0f4f8;
+    color: #333;
 }
 
 body {
@@ -10,6 +18,16 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    padding: 20px;
+}
+
+.registration-container {
+    width: 100%;
+    max-width: 440px;
+    background: #ffffff;
+    padding: 32px;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
 }
 
 .registration-container {
@@ -22,18 +40,234 @@ body {
 
 h1 {
     text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #1a202c;
     margin-bottom: 25px;
 }
 
 label {
     display: block;
     margin-top: 15px;
+    margin-bottom: 6px;
+    font-weight: 600;
+    font-size: 14px;
+    color: #4a5568;
     margin-bottom: 5px;
     font-weight: bold;
 }
 
 input {
     width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #cbd5e0;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input:focus {
+    outline: none;
+    border-color: #1976d2;
+    box-shadow: 0 0 0 3px rgba(25, 118, 210, 0.15);
+}
+
+button, .btn-primary, .btn-primary-link {
+    display: inline-block;
+    width: 100%;
+    margin-top: 20px;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    background: #1976d2;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    transition: background 0.2s ease, transform 0.1s ease;
+}
+
+button:hover, .btn-primary:hover, .btn-primary-link:hover {
+    background: #125aa0;
+}
+
+.btn-secondary {
+    background: #e2e8f0;
+    color: #2d3748;
+    margin-top: 12px;
+}
+
+.btn-secondary:hover {
+    background: #cbd5e0;
+}
+
+.button-row {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.button-row button {
+    margin-top: 0;
+}
+
+#message, #loginMessage, .feedback-message {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 14px;
+    font-weight: 600;
+    min-height: 20px;
+}
+
+/* Avatar & Profile Headers */
+.profile-header, .welcome-box {
+    text-align: center;
+    margin-bottom: 22px;
+}
+
+.avatar {
+    width: 70px;
+    height: 70px;
+    line-height: 70px;
+    background: #1976d2;
+    color: #ffffff;
+    border-radius: 50%;
+    font-size: 26px;
+    font-weight: bold;
+    margin: 0 auto 12px auto;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(25, 118, 210, 0.25);
+}
+
+.subheading {
+    color: #718096;
+    font-size: 14px;
+    margin-top: 4px;
+}
+
+/* Tabs */
+.tabs {
+    display: flex;
+    border-bottom: 2px solid #e2e8f0;
+    margin-bottom: 20px;
+    gap: 4px;
+}
+
+.tab-btn {
+    flex: 1;
+    margin-top: 0;
+    padding: 10px 4px;
+    background: transparent;
+    color: #718096;
+    font-size: 13px;
+    font-weight: 600;
+    border-radius: 0;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -2px;
+}
+
+.tab-btn:hover {
+    background: #f7fafc;
+    color: #1976d2;
+}
+
+.tab-btn.active {
+    color: #1976d2;
+    border-bottom: 2px solid #1976d2;
+    background: transparent;
+}
+
+/* Tab Content */
+.tab-content {
+    display: none;
+    animation: fadeIn 0.25s ease-in-out;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(4px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Info Display (AM-12 View Profile) */
+.info-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid #edf2f7;
+}
+
+.info-label {
+    font-weight: 600;
+    color: #4a5568;
+    font-size: 14px;
+}
+
+.info-value {
+    color: #1a202c;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.badge-active {
+    background: #def7ec;
+    color: #03543f;
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* Profile Footer & Links */
+.profile-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 24px;
+    padding-top: 15px;
+    border-top: 1px solid #edf2f7;
+}
+
+.nav-link {
+    color: #1976d2;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.nav-link:hover {
+    text-decoration: underline;
+}
+
+.btn-logout-link {
+    background: none;
+    border: none;
+    color: #e53e3e;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 0;
+    width: auto;
+    margin-top: 0;
+}
+
+.btn-logout-link:hover {
+    background: none;
+    text-decoration: underline;
+    color: #c53030;
+}
+
+.dashboard-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
     padding: 12px;
     border: 1px solid #ccc;
     border-radius: 5px;

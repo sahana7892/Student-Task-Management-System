@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Profile</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="registration-container profile-container">
+        <div class="profile-header">
+            <div class="avatar" id="avatarInitials">S</div>
+            <h1 id="profileHeading">Student Profile</h1>
+            <p id="profileSubheading" class="subheading"></p>
+        </div>
+
+        <!-- Navigation Tabs -->
+        <div class="tabs">
+            <button class="tab-btn active" id="tabViewBtn" onclick="switchTab('view')">View Profile</button>
+            <button class="tab-btn" id="tabEditBtn" onclick="switchTab('edit')">Edit Profile</button>
+            <button class="tab-btn" id="tabPasswordBtn" onclick="switchTab('password')">Change Password</button>
+        </div>
+
+        <!-- AM-12: View Student Profile -->
+        <div id="viewSection" class="tab-content active">
+            <div class="info-group">
+                <span class="info-label">Full Name:</span>
+                <span class="info-value" id="displayFullName">-</span>
+            </div>
+            <div class="info-group">
+                <span class="info-label">Email Address:</span>
+                <span class="info-value" id="displayEmail">-</span>
+            </div>
+            <div class="info-group">
+                <span class="info-label">Account Status:</span>
+                <span class="info-value badge-active">Active</span>
+            </div>
+            <button type="button" class="btn-primary" onclick="switchTab('edit')">Edit Profile</button>
+        </div>
+
+        <!-- AM-10: Edit Student Profile -->
+        <div id="editSection" class="tab-content">
+            <form id="editProfileForm">
+                <label for="editName">Full Name</label>
+                <input
+                    type="text"
+                    id="editName"
+                    placeholder="Enter your full name"
+                    required
+                >
+
+                <label for="editEmail">Email Address</label>
+                <input
+                    type="email"
+                    id="editEmail"
+                    placeholder="Enter your email"
+                    required
+                >
+
+                <p id="editMessage" class="feedback-message"></p>
+
+                <div class="button-row">
+                    <button type="submit" class="btn-primary">Save Changes</button>
+                    <button type="button" class="btn-secondary" onclick="switchTab('view')">Cancel</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- AM-11: Change Password -->
+        <div id="passwordSection" class="tab-content">
+            <form id="changePasswordForm">
+                <label for="currentPassword">Current Password</label>
+                <input
+                    type="password"
+                    id="currentPassword"
+                    placeholder="Enter current password"
+                    required
+                >
+
+                <label for="newPassword">New Password</label>
+                <input
+                    type="password"
+                    id="newPassword"
+                    placeholder="Enter new password (min. 6 characters)"
+                    required
+                >
+
+                <label for="confirmNewPassword">Confirm New Password</label>
+                <input
+                    type="password"
+                    id="confirmNewPassword"
+                    placeholder="Confirm new password"
+                    required
+                >
+
+                <p id="passwordMessage" class="feedback-message"></p>
+
+                <div class="button-row">
+                    <button type="submit" class="btn-primary">Update Password</button>
+                    <button type="button" class="btn-secondary" onclick="resetPasswordForm(); switchTab('view')">Cancel</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Footer Links -->
+        <div class="profile-footer">
+            <a href="dashboard.html" class="nav-link">&larr; Back to Dashboard</a>
+            <button onclick="logout()" class="btn-logout-link">Logout</button>
+        </div>
+    </div>
+
+    <script src="profile.js"></script>
+</body>
+</html>
